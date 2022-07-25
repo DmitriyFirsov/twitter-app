@@ -4,6 +4,7 @@ AllCops:
     - db/schema.rb
     - bin/*
     - yarn.lock
+    - vendor/**/*.rb
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

@@ -1,9 +1,9 @@
 AllCops:
   NewCops: enable
-
-Metrics/BlockLength:
   Exclude:
     - db/schema.rb
+    - bin/*
+    - yarn.lock
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

@@ -15,3 +15,5 @@ jobs:
           bundler-cache: true
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
+      - name: Tests
+        run: bin/rails test

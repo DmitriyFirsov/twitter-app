@@ -4,7 +4,11 @@ AllCops:
     - db/schema.rb
     - bin/*
     - yarn.lock
-    - vendor/**/*.rb
+# @see https://github.com/rubocop/rubocop/blob/9f24166d04922361a84d2e1e95ef4d15f81443e0/config/default.yml#L63
+    - node_modules/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - .git/**/*
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

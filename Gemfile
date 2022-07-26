@@ -36,9 +36,9 @@ group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
 
   # See https://github.com/rubocop/rubocop
+  gem "dotenv-rails", "~> 2.7.6"
   gem "rubocop", "~> 1.30", require: false
   gem "rubocop-rails", "~> 2.14", ">= 2.14.2"
-  gem 'dotenv-rails', "~> 2.7.6"
 end
 
 group :development do

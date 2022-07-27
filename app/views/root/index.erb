@@ -1,1 +1,20 @@
-<H1> This is root page </H1>
+<% if user_signed_in? %>
+  <% @articles.each do |article| %>
+    <div>
+      <div>
+        <div>
+          <%= article.user.name %>
+        </div>
+        <div>
+          <%= article.user.surname %>
+        </div>
+      </div>
+      <div>
+        <%= article.message %>
+      </div>
+      <div><%= article.created_at %></div>
+    </div>
+  <% end %>
+<% else %>
+  <h1> You should <%= link_to "sign in", new_session_path(:user) %> to see articles </h1>
+<% end %>

@@ -1,8 +1,7 @@
 # SET UP
 
-```
-docker-compose up
-```
+1) copy all from ``.env.example`` to ``.env`` file 
+2) run ``docker-compose up``
 
 # REQUIREMENTS
 

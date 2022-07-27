@@ -16,6 +16,18 @@ user_list = [
   {
     name: "Alan",
     surname: "Watts"
+  },
+  {
+    name: "Hilary",
+    surname: "Shepherd"
+  },
+  {
+    name: "Jack",
+    surname: "Howard"
+  },
+  {
+    name: "John",
+    surname: "Doe"
   }
 ]
 
@@ -38,6 +50,7 @@ user_list.each do |user_item|
   (0..Random.new.rand(5..20)).each do |_i|
     user.articles.create do |new_article|
       new_article.message = Faker::Lorem.paragraph_by_chars(number: 120, supplemental: false)
+      new_article.created_at = Faker::Date.between(from: 20.days.ago, to: Date.today)
     end
   end
 end

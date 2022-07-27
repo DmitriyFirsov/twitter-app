@@ -13,8 +13,8 @@ Most of listed stories covers around 70% of development processes in Galvanize.
 - [x] User sign in/sign out/log in into the application. During sign up user must provide at least his name and email
 - [x] User should be able to edit his profile
 - [ ] User can create Articles (same as Tweet in Twitter)
-- [ ] User should be able to see list of all Articles (including other user’s Articles)
-- [ ] Login into the application should be required to see Articles
+- [x] User should be able to see list of all Articles (including other user’s Articles)
+- [x] Login into the application should be required to see Articles
 - [ ] Every user should be able to comment any article
 - [ ] User should be able to delete their article
 - [ ] User should be able to update their article

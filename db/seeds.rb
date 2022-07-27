@@ -32,5 +32,12 @@ user_list.each do |user_item|
       }
     )
   )
+
   user.save
+
+  (0..Random.new.rand(5..20)).each do |_i|
+    user.articles.create do |new_article|
+      new_article.message = Faker::Lorem.paragraph_by_chars(number: 120, supplemental: false)
+    end
+  end
 end

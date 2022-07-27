@@ -5,8 +5,8 @@ As a pet project we suggest to create analog of Twitter.
 Most of listed stories covers around 70% of development processes in Galvanize. 
 
 ## There are following user stories:
-- User sign in/sign out/log in into the application. During sign up user must provide at least his name and email
-- User should be able to edit his profile
+- [x] User sign in/sign out/log in into the application. During sign up user must provide at least his name and email
+- [x] User should be able to edit his profile
 - User can create Articles (same as Tweet in Twitter)
 - User should be able to see list of all Articles (including other user’s Articles)
 - Login into the application should be required to see Articles

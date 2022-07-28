@@ -47,7 +47,7 @@ user_list.each do |user_item|
 
   user.save
 
-  (0..Random.new.rand(5..20)).each do |_i|
+  rand(5..20).times do
     user.articles.create do |new_article|
       new_article.message = Faker::Lorem.paragraph_by_chars(number: 120, supplemental: false)
       new_article.created_at = Faker::Date.between(from: 20.days.ago, to: Date.today)

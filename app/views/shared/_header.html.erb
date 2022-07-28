@@ -14,6 +14,8 @@
       <%= link_to "Sign out", "/user/sign_out" %>
     </div>
   <% else %>
-    <%= link_to "Sign in", "/user/sign_in" %>
+    <% if controller_name != "sessions" %>
+      <%= link_to "Sign in", "/user/sign_in" %>
+    <% end %>
   <% end %>
 </header>

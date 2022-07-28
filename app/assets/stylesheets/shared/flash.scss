@@ -1,0 +1,16 @@
+
+.flash-message {
+  border-radius: 5px;
+  border: black solid 1px;
+  padding: 0.5em;
+  margin: 0.5em;
+
+  &_alert {
+    border-color: #B00100;
+    background-color: #fd9a9a;
+  }
+  &_notice {
+    border-color: #f68600;
+    background-color: #f6b668;
+  }
+}

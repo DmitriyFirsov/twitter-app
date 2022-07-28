@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+  db-data:
+  gem-cache:
+
+services:
+  database:
+    image: postgres:14
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  app:
+    image: ruby:2.7.6
+    restart: unless-stopped
+    env_file:
+      - .env
+    working_dir: /src
+    volumes:
+      - ./:/src
+      - gem-cache:/usr/local/bundle
+    command: bash -c "bundler && rake && bin/rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"

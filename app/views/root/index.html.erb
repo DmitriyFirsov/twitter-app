@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
-  <%= stylesheet_link_tag 'article' %>
+  <% content_for :head do %>
+    <%= stylesheet_link_tag 'article' %>
+  <% end %>
   <% @articles.each do |article| %>
-    <div class="article">
+    <article class="article">
       <div class="article-name-container">
         <div>
           <%= article.user.name %>
@@ -13,8 +15,8 @@
       <div>
         <%= article.message %>
       </div>
-      <div>Posted <%= time_ago_in_words(article.created_at) %> ago</div>
-    </div>
+      <time>Posted <%= time_ago_in_words(article.created_at) %> ago</time>
+    </article>
   <% end %>
 <% else %>
   <h1> You should <%= link_to "sign in", new_session_path(:user) %> to see articles </h1>

@@ -1,7 +1,8 @@
 <% if user_signed_in? %>
+  <%= stylesheet_link_tag 'article' %>
   <% @articles.each do |article| %>
-    <div>
-      <div>
+    <div class="article">
+      <div class="article-name-container">
         <div>
           <%= article.user.name %>
         </div>
@@ -12,7 +13,7 @@
       <div>
         <%= article.message %>
       </div>
-      <div><%= article.created_at %></div>
+      <div><%= time_ago_in_words(article.created_at) %></div>
     </div>
   <% end %>
 <% else %>

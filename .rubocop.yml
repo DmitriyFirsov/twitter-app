@@ -9,10 +9,6 @@ AllCops:
     - vendor/**/*
     - .git/**/*
 
-Metrics/MethodLength:
-  Exclude:
-    - db/migrate/**/*
-
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   ConsistentQuotesInMultiline: true

@@ -1,6 +1,7 @@
-
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'flash-message' %>
+<% if flash.any? %>
+  <% content_for :head do %>
+    <%= stylesheet_link_tag 'flash-message' %>
+  <% end %>
 <% end %>
 <% flash.each do |type, msg| %>
   <div class="flash-message flash-message_<%= type %>">

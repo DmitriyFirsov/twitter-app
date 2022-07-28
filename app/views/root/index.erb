@@ -1,22 +1,6 @@
 <%= render "shared/flash" %>
 <% if user_signed_in? %>
-  <%= stylesheet_link_tag 'article' %>
-  <% @articles.each do |article| %>
-    <div class="article">
-      <div class="article-name-container">
-        <div>
-          <%= article.user.name %>
-        </div>
-        <div>
-          <%= article.user.surname %>
-        </div>
-      </div>
-      <div>
-        <%= article.message %>
-      </div>
-      <div>Posted <%= time_ago_in_words(article.created_at) %> ago</div>
-    </div>
-  <% end %>
+  <%= render "shared/articles_list" %>
 <% else %>
   <h1> You should <%= link_to "sign in", new_session_path(:user) %> to see articles </h1>
 <% end %>

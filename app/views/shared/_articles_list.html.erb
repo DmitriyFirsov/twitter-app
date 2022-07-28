@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag 'article' %>
+<% @articles.each do |article| %>
+  <div class="article">
+    <div class="article-name-container">
+      <div>
+        <%= article.user.name %>
+      </div>
+      <div>
+        <%= article.user.surname %>
+      </div>
+    </div>
+    <div>
+      <%= article.message %>
+    </div>
+    <div>Posted <%= time_ago_in_words(article.created_at) %> ago</div>
+  </div>
+<% end %>

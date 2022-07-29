@@ -1,7 +1,4 @@
 <% if user_signed_in? %>
-  <% content_for :head do %>
-    <%= stylesheet_link_tag 'article' %>
-  <% end %>
   <% @articles.each do |article| %>
     <article class="article">
       <div class="article-name-container">

@@ -1,0 +1,17 @@
+<header class="header">
+  <% if user_signed_in? %>
+    <div class="header-user-container">
+      <div>
+        <%= current_user.name %>
+      </div>
+      <div>
+        <%= current_user.surname %>
+      </div>
+      <%= link_to "Sign out", destroy_session_path(:user) %>
+    </div>
+  <% else %>
+    <% if controller_name != "sessions" %>
+      <%= link_to "Sign in", "/user/sign_in" %>
+    <% end %>
+  <% end %>
+</header>

@@ -8,29 +8,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user_list = [
-  {
-    name: "John",
-    surname: "Smith"
-  },
-  {
-    name: "Alan",
-    surname: "Watts"
-  }
-]
-
-def make_email(data)
-  "#{data[:name].downcase}.#{data[:surname].downcase}@example.com"
-end
-
-user_list.each do |user_item|
-  user = User.new(
-    user_item.merge(
-      {
-        password: "Password1234!",
-        email: make_email(user_item)
-      }
-    )
-  )
-  user.save
-end
+require_relative "seeds/development" if %w[development test].include? Rails.env

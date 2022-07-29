@@ -37,7 +37,7 @@ user_list.each do |user_item|
     )
   )
 
-  user.save
+  user.save!
 
   rand(5..20).times do
     next unless user.saved_changes?

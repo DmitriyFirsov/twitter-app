@@ -1,18 +1,24 @@
 <% if user_signed_in? %>
   <% @articles.each do |article| %>
     <article class="article">
-      <div class="article-name-container">
+      <header class="article-name-container">
         <div>
           <%= article.user.name %>
         </div>
         <div>
           <%= article.user.surname %>
         </div>
-      </div>
+      </header>
       <div>
         <%= article.message %>
       </div>
-      <time>Posted <%= time_ago_in_words(article.created_at) %> ago</time>
+      <footer>
+        Posted
+          <time datetime="<%= article.created_at %>">
+            <%= time_ago_in_words(article.created_at) %>
+          </time>
+        ago
+      </footer>
     </article>
   <% end %>
 <% else %>

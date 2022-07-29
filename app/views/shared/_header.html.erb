@@ -7,7 +7,7 @@
       <div>
         <%= current_user.surname %>
       </div>
-      <%= link_to "Sign out", "/user/sign_out" %>
+      <%= link_to "Sign out", destroy_session_path(:user) %>
     </div>
   <% else %>
     <% if controller_name != "sessions" %>

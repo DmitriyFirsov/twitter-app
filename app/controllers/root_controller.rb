@@ -2,6 +2,13 @@
 
 class RootController < ApplicationController
   def index
-    @articles = Article.eager_load(:user).reorder(created_at: :DESC).all if user_signed_in?
+    @articles = if user_signed_in?
+                  Article
+                    .eager_load(:user)
+                    .reorder(created_at: :desc)
+                    .all
+                else
+                  []
+                end
   end
 end

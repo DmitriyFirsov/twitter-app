@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 user_list = [
   {
@@ -39,6 +40,8 @@ user_list.each do |user_item|
   user.save
 
   rand(5..20).times do
+    next unless user.saved_changes?
+
     user.articles.create(
       message: Faker::Lorem.paragraph_by_chars(number: 120, supplemental: false),
       created_at: Faker::Date.between(from: 20.days.ago, to: Date.today)

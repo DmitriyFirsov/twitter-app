@@ -2,12 +2,12 @@
   <% @articles.each do |article| %>
     <article class="article">
       <header class="article-name-container">
-        <div>
+        <p>
           <%= article.user.name %>
-        </div>
-        <div>
+        </p>
+        <p>
           <%= article.user.surname %>
-        </div>
+        </p>
       </header>
       <section>
         <%= article.message %>

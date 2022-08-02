@@ -38,6 +38,7 @@ group :development, :test do
   gem "faker", "~> 2.21"
   gem "rubocop", "~> 1.30", require: false
   gem "rubocop-rails", "~> 2.14", ">= 2.14.2"
+  gem "rspec-rails", "~> 5.1"
 end
 
 group :development do

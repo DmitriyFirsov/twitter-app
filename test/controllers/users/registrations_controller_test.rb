@@ -13,7 +13,7 @@ module Users
         password_confirmation: "password"
       }
 
-      assert_changes -> { User.find_by(email: user_payload[:email]) }, "User not added" do
+      assert_difference -> { User.count }, 1 do
         post "/user", params: {
           user: user_payload
         }
@@ -21,8 +21,8 @@ module Users
 
       new_user = User.find_by(email: user_payload[:email])
 
-      assert new_user.name == user_payload[:name], "Name not same as in payload"
-      assert new_user.surname == user_payload[:surname], "Surname not same as in payload"
+      assert_equal "name", new_user.name, "Name not same as in payload"
+      assert_equal "surname", new_user.surname, "Surname not same as in payload"
     end
   end
 end

@@ -3,8 +3,8 @@
 class CreateArticles < ActiveRecord::Migration[6.1]
   def change
     create_table :articles, id: :uuid do |t|
-      t.string :message
-      t.references :user
+      t.string :message, null: false, limit: 120
+      t.references :user, null: false
 
       t.timestamps
     end

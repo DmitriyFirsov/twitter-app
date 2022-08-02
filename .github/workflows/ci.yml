@@ -33,4 +33,4 @@ jobs:
           POSTGRES_PASSWORD: some-password
           POSTGRES_USER: test-app-user
           POSTGRES_DB: todo-app
-          POSTGRES_HOST: postgres
+          POSTGRES_HOST: localhost

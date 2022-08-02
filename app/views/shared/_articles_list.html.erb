@@ -1,13 +1,15 @@
 <% @articles.each do |article| %>
   <article class="article">
-    <header class="article-name-container">
-      <p>
-        <%= article.user.name %>
-      </p>
-      <p>
-        <%= article.user.surname %>
-      </p>
-    </header>
+    <%  if @show_article_author %>
+      <header class="article-name-container">
+        <p>
+          <%= article.user.name %>
+        </p>
+        <p>
+          <%= article.user.surname %>
+        </p>
+      </header>
+    <% end %>
     <section>
       <%= article.message %>
     </section>

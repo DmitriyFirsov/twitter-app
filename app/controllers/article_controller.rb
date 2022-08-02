@@ -7,8 +7,9 @@ class ArticleController < ApplicationController
     @articles = Article
                 .where(["user_id = ?", current_user.id])
                 .eager_load(:user)
-                .reorder(created_at: :DESC)
+                .reorder(created_at: :desc)
                 .all
+    @show_article_author = false
   end
 
 end

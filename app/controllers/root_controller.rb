@@ -10,5 +10,6 @@ class RootController < ApplicationController
                 else
                   []
                 end
+    @show_article_author = true
   end
 end

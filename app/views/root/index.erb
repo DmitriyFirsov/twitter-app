@@ -1,6 +1,0 @@
-<%= render "shared/flash" %>
-<% if user_signed_in? %>
-  <%= render "shared/articles_list" %>
-<% else %>
-  <h1> You should <%= link_to "sign in", new_session_path(:user) %> to see articles </h1>
-<% end %>

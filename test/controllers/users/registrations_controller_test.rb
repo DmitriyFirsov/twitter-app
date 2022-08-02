@@ -5,7 +5,7 @@ require "test_helper"
 module Users
   class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     test "should register new user" do
-      user = {
+      user_payload = {
         name: "name",
         surname: "surname",
         email: "test@example.com",
@@ -13,12 +13,16 @@ module Users
         password_confirmation: "password"
       }
 
-      post "/user", params: {
-        user: user
-      }
+      assert_changes -> { User.find_by(email: user_payload[:email]) }, "User not added" do
+        post "/user", params: {
+          user: user_payload
+        }
+      end
 
-      user_list = User.find_by!(name: user[:name], surname: user[:surname], email: user[:email])
-      assert user_list
+      new_user = User.find_by(email: user_payload[:email])
+
+      assert new_user.name == user_payload[:name], "Name not same as in payload"
+      assert new_user.surname == user_payload[:surname], "Surname not same as in payload"
     end
   end
 end

@@ -3,18 +3,16 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-   POSTGRES_PASSWORD: some-password
-   POSTGRES_USER: test-app-user
-   POSTGRES_DB: todo-app
-   POSTGRES_HOST: database
-
 jobs:
   lint:
     runs-on: ubuntu-latest
     services:
       database:
-        image: postgres
+        image: postgres:14
+        env:
+          POSTGRES_PASSWORD: some-password
+          POSTGRES_USER: test-app-user
+          POSTGRES_DB: todo-app
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -31,3 +29,8 @@ jobs:
         run: bundle exec rubocop --parallel
       - name: Tests
         run: bin/rails test
+        env:
+          POSTGRES_PASSWORD: some-password
+          POSTGRES_USER: test-app-user
+          POSTGRES_DB: todo-app
+          POSTGRES_HOST: database

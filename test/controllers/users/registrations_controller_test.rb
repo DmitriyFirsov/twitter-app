@@ -4,7 +4,7 @@ require "test_helper"
 
 module Users
   class RegistrationsControllerTest < ActionDispatch::IntegrationTest
-    test "should permit additional fields to modal" do
+    test "should register new user" do
       user = {
         name: "name",
         surname: "surname",

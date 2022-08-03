@@ -29,13 +29,6 @@ jobs:
           bundler-cache: true
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
-      - name: Tests minitest
-        run: bin/rails test
-        env:
-          POSTGRES_PASSWORD: some-password
-          POSTGRES_USER: test-app-user
-          POSTGRES_DB: todo-app
-          POSTGRES_HOST: localhost
       - name: Tests rspec
         run: bin/rails spec
         env:

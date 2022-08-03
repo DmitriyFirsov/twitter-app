@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :user
 
-  resources :article
+  get "/articles", to: "article#index", as: "self_articles_list"
+  get "/articles/new", to: "article#new", as: "new_article"
+  post "/articles/new", to: "article#new"
 end

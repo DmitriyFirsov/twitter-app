@@ -12,9 +12,8 @@ RSpec.describe "Registrations", type: :request do
       password_confirmation: "password"
     }
 
-    post "/user", params: {
-      user: user_payload
-    }
+    expect { post "/user", params: { user: user_payload } }
+      .to change(User, :count).by(1)
 
     new_user = User.find_by(email: user_payload[:email])
 

@@ -2,12 +2,14 @@
   <article class="article">
     <% if @show_article_author %>
       <header class="article-name-container">
+        <a href="<%= articles_list_path(article.user.id) %>">
         <p>
           <%= article.user.name %>
         </p>
         <p>
           <%= article.user.surname %>
         </p>
+        </a>
       </header>
     <% end %>
     <section>

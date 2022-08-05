@@ -5,7 +5,7 @@ class ArticleController < ApplicationController
 
   def index
     @articles = Article
-                .where(["user_id = ?", current_user.id])
+                .where(["user_id = ?", params[:id] || current_user.id])
                 .eager_load(:user)
                 .reorder(created_at: :desc)
                 .all
@@ -22,7 +22,6 @@ class ArticleController < ApplicationController
         redirect_to action: :index
       end
     end
-    @button_text = "Create"
   end
 
   def edit
@@ -32,11 +31,10 @@ class ArticleController < ApplicationController
       @article.update permitted_article_fields
       if @article.save
         flash[:success] = "Article edited"
-        return redirect_to action: :index
+        return redirect_to self_articles_list_path
       end
     end
 
-    @button_text = "Edit"
     render "article/new"
   end
 

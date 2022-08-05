@@ -24,6 +24,21 @@ class ArticleController < ApplicationController
     end
   end
 
+  def edit
+    @article = Article.find_by(id: params[:id], user: current_user)
+    if request.request_method != "GET" && @article
+      @article.update permitted_article_fields
+      if @article.save
+        flash[:success] = "Article created"
+        redirect_to action: :index
+      end
+    end
+  end
+
+  def remove
+    Article.find_by(id: params[:id], user: current_user)
+  end
+
   protected
 
   def permitted_article_fields

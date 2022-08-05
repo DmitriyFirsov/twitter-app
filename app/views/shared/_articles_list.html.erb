@@ -1,6 +1,6 @@
 <% @articles.each do |article| %>
   <article class="article">
-    <%  if @show_article_author %>
+    <% if @show_article_author %>
       <header class="article-name-container">
         <p>
           <%= article.user.name %>
@@ -14,11 +14,29 @@
       <%= article.message %>
     </section>
     <footer>
-      Posted
-      <time datetime="<%= article.created_at %>">
-        <%= time_ago_in_words(article.created_at) %>
-      </time>
-      ago
+      <div>
+        Posted
+        <time datetime="<%= article.created_at %>">
+          <%= time_ago_in_words(article.created_at) %>
+        </time>
+        ago
+      </div>
+      <% if article.user.id == current_user.id %>
+        <div>
+          <button
+            data-id="<%= article.id %>"
+            data-button="edit"
+          >
+            Edit
+          </button>
+          <button
+            data-id="<%= article.id %>"
+            data-button="remove"
+          >
+            Remove
+          </button>
+        </div>
+      <% end %>
     </footer>
   </article>
 <% end %>

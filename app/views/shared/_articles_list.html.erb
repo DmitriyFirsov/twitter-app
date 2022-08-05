@@ -23,15 +23,14 @@
       </div>
       <% if article.user.id == current_user.id %>
         <div>
-          <button
-            data-id="<%= article.id %>"
-            data-button="edit"
+          <a
+            href="<%= edit_article_path(article) %>"
           >
             Edit
-          </button>
+          </a>
           <button
             data-id="<%= article.id %>"
-            data-button="remove"
+            data-action="remove"
           >
             Remove
           </button>
@@ -40,3 +39,4 @@
     </footer>
   </article>
 <% end %>
+<%= javascript_include_tag "articles.js" %>

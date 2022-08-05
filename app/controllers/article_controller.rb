@@ -36,7 +36,8 @@ class ArticleController < ApplicationController
   end
 
   def remove
-    Article.find_by(id: params[:id], user: current_user)
+    @article = Article.find_by(id: params[:id], user: current_user)
+    @article&.destroy
   end
 
   protected

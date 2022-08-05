@@ -1,5 +1,5 @@
-<%= form_with model: @article, local: true do |form| %>
+<%= form_for @article, url: edit_article_path do |form| %>
   <%= form.label :message, "Enter new article:" %>
   <%= form.text_area :message %>
-  <%= form.submit "Create" %>
+  <%= form.submit @button_text %>
 <% end %>

@@ -22,17 +22,22 @@ class ArticleController < ApplicationController
         redirect_to action: :index
       end
     end
+    @button_text = "Create"
   end
 
   def edit
-    @article = Article.find_by(id: params[:id], user: current_user)
-    if request.request_method != "GET" && @article
+    find_article
+
+    if request.request_method == "PATCH"
       @article.update permitted_article_fields
       if @article.save
-        flash[:success] = "Article created"
-        redirect_to action: :index
+        flash[:success] = "Article edited"
+        return redirect_to action: :index
       end
     end
+
+    @button_text = "Edit"
+    render "article/new"
   end
 
   def remove
@@ -41,6 +46,11 @@ class ArticleController < ApplicationController
   end
 
   protected
+
+  def find_article
+    @article = Article.find_by(id: params[:id], user: current_user)
+    raise ActionController::RoutingError, "Not Found" unless @article
+  end
 
   def permitted_article_fields
     params.require(:article).permit(:message)

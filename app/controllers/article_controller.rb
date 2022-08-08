@@ -51,7 +51,7 @@ class ArticleController < ApplicationController
     redirect_on_success I18n.t "articles.edit.success"
   end
 
-  def remove
+  def destroy
     @article = Article.find_by!(id: params[:id], user: current_user)
     @article.destroy
   end

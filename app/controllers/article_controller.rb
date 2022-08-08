@@ -34,7 +34,7 @@ class ArticleController < ApplicationController
   def create
     @article = Article.create_new permitted_article_fields, current_user
 
-    return redirect_on_success "Article created" if @article.save
+    return redirect_on_success I18n.t "articles.new.success" if @article.save
 
     render action: :new
   end
@@ -48,7 +48,7 @@ class ArticleController < ApplicationController
 
     return unless @article.save
 
-    redirect_on_success "Article edited"
+    redirect_on_success I18n.t "articles.edit.success"
   end
 
   def remove

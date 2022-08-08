@@ -1,0 +1,18 @@
+en:
+  articles:
+    paths:
+      new: 'New article'
+      edit: 'Edit'
+    actions:
+      edit: 'Edit'
+      remove: 'Remove'
+      create: 'Create'
+    edit:
+      title: 'Edit article'
+      success: 'Article edited'
+    new:
+      title: 'Enter new article'
+      success: 'Article created'
+    list:
+      footer_prefix: "Posted"
+      footer_postfix: "ogo"

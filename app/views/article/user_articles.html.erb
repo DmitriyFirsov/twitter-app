@@ -1,6 +1,2 @@
-<% if user_signed_in? %>
-  <h1><%= @user.name %> <%= @user.surname %> articles</h1>
-  <%= render 'shared/articles_list' %>
-<% else %>
-  <p> You should <%= link_to "sign in", new_session_path(:user) %> to see articles </p>
-<% end %>
+<h1><%= @user.name %> <%= @user.surname %> articles</h1>
+<%= render 'shared/articles_list' %>

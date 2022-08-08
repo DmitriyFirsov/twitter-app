@@ -2,7 +2,7 @@
   <article class="article">
     <% if @show_article_author %>
       <header class="article-name-container">
-        <%= link_to articles_list_path(article.user) do %>
+        <%= link_to user_articles_list_path(article.user) do %>
           <p>
             <%= article.user.name %>
           </p>

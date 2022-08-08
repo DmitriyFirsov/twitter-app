@@ -3,13 +3,13 @@
 Rails.application.routes.draw do
   devise_for :user, controllers: { registrations: "users/registrations" }
 
-  root to: "root#index"
+  root to: "article#index"
 
   get "/articles/new", to: "article#new", as: "new_article"
   post "/articles/new", to: "article#new", as: "articles"
   get "/articles/:id/edit", to: "article#edit", as: "edit_article"
   patch "/articles/:id/edit", to: "article#edit"
   delete "/articles/:id", to: "article#remove", as: "remove_article"
-  get "/articles", to: "article#index", as: "self_articles_list"
-  get "/articles/:id", to: "article#index", as: "articles_list"
+  get "/articles", to: "article#user_articles", as: "self_articles_list"
+  get "/articles/:id", to: "article#user_articles", as: "user_articles_list"
 end

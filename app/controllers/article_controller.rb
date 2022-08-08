@@ -2,10 +2,21 @@
 
 class ArticleController < ApplicationController
   before_action :authenticate_user!
-
   def index
+    @articles = if user_signed_in?
+                  Article
+                    .eager_load(:user)
+                    .reorder(created_at: :desc)
+                    .all
+                else
+                  []
+                end
+    @show_article_author = true
+  end
+
+  def user_articles
     @articles = Article
-                .where(["user_id = ?", params[:id] || current_user.id])
+                .where("user_id = ?", params[:id] || current_user.id)
                 .eager_load(:user)
                 .reorder(created_at: :desc)
                 .all

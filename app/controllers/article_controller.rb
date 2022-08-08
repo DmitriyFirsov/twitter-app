@@ -16,11 +16,14 @@ class ArticleController < ApplicationController
   end
 
   def user_articles
+    detect_current_user
+
     @articles = Article
-                .where("user_id = ?", params[:id] || current_user.id)
+                .where("user_id = ?", @user.id)
                 .eager_load(:user)
                 .reorder(created_at: :desc)
                 .all
+
     @show_article_author = false
   end
 
@@ -31,10 +34,7 @@ class ArticleController < ApplicationController
   def create
     @article = Article.create_new permitted_article_fields, current_user
 
-    if @article.save
-      flash[:success] = "Article created"
-      return redirect_to action: :index
-    end
+    return redirect_on_success "Article created" if @article.save
 
     render action: :new
   end
@@ -48,8 +48,7 @@ class ArticleController < ApplicationController
 
     return unless @article.save
 
-    flash[:success] = "Article edited"
-    redirect_to self_articles_list_path
+    redirect_on_success "Article edited"
   end
 
   def remove
@@ -58,6 +57,19 @@ class ArticleController < ApplicationController
   end
 
   protected
+
+  def detect_current_user
+    @user = if params[:id]
+              User.find_by!(id: params[:id])
+            else
+              current_user
+            end
+  end
+
+  def redirect_on_success(message)
+    flash[:success] = message
+    redirect_to self_articles_list_path
+  end
 
   def permitted_article_fields
     params.require(:article).permit(:message)

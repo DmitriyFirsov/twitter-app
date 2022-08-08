@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   root to: "article#index"
 
   get "/articles/new", to: "article#new", as: "new_article"
-  post "/articles/new", to: "article#new", as: "articles"
+  post "/articles/new", to: "article#create"
+
   get "/articles/:id/edit", to: "article#edit", as: "edit_article"
   patch "/articles/:id/edit", to: "article#edit"
   delete "/articles/:id", to: "article#remove", as: "remove_article"

@@ -1,15 +1,5 @@
-<%
-  if action_name == "edit"
-    @url = edit_article_path
-    @button_text = 'Edit'
-  else
-    @url = articles_path
-    @button_text = 'Create'
-  end
-%>
-
-<%= form_for @article, url: @url do |form| %>
+<%= form_for @article, url: new_article_path do |form| %>
   <%= form.label :message, "Enter new article:" %>
   <%= form.text_area :message %>
-  <%= form.submit @button_text %>
+  <%= form.submit "Create" %>
 <% end %>

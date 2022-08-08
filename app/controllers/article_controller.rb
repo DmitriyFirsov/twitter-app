@@ -2,6 +2,7 @@
 
 class ArticleController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @articles = if user_signed_in?
                   Article
@@ -24,42 +25,39 @@ class ArticleController < ApplicationController
   end
 
   def new
-    if request.request_method == "GET"
-      @article = Article.new
-    else
-      @article = Article.create_new permitted_article_fields, current_user
-      if @article.save
-        flash[:success] = "Article created"
-        redirect_to action: :index
-      end
+    @article = Article.new
+  end
+
+  def create
+    @article = Article.create_new permitted_article_fields, current_user
+
+    if @article.save
+      flash[:success] = "Article created"
+      return redirect_to action: :index
     end
+
+    render action: :new
   end
 
   def edit
-    find_article
+    @article = Article.find_by!(id: params[:id], user: current_user)
 
-    if request.request_method == "PATCH"
-      @article.update permitted_article_fields
-      if @article.save
-        flash[:success] = "Article edited"
-        return redirect_to self_articles_list_path
-      end
-    end
+    return unless request.request_method == "PATCH"
 
-    render "article/new"
+    @article.update permitted_article_fields
+
+    return unless @article.save
+
+    flash[:success] = "Article edited"
+    redirect_to self_articles_list_path
   end
 
   def remove
-    @article = Article.find_by(id: params[:id], user: current_user)
+    @article = Article.find_by!(id: params[:id], user: current_user)
     @article&.destroy
   end
 
   protected
-
-  def find_article
-    @article = Article.find_by(id: params[:id], user: current_user)
-    raise ActionController::RoutingError, "Not Found" unless @article
-  end
 
   def permitted_article_fields
     params.require(:article).permit(:message)

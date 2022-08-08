@@ -1,0 +1,5 @@
+<%= form_for @article, url: edit_article_path do |form| %>
+  <%= form.label :message, "Edit article:" %>
+  <%= form.text_area :message %>
+  <%= form.submit "Edit" %>
+<% end %>

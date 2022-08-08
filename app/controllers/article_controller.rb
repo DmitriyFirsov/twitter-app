@@ -16,7 +16,7 @@ class ArticleController < ApplicationController
   end
 
   def user_articles
-    detect_current_user
+    detect_user
 
     @articles = Article
                 .where("user_id = ?", @user.id)
@@ -32,7 +32,7 @@ class ArticleController < ApplicationController
   end
 
   def create
-    @article = Article.create_new permitted_article_fields, current_user
+    @article = Article.new article_params
 
     return redirect_on_success I18n.t "articles.new.success" if @article.save
 
@@ -44,7 +44,7 @@ class ArticleController < ApplicationController
 
     return unless request.request_method == "PATCH"
 
-    @article.update permitted_article_fields
+    @article.update article_params
 
     return unless @article.save
 
@@ -58,7 +58,7 @@ class ArticleController < ApplicationController
 
   protected
 
-  def detect_current_user
+  def detect_user
     @user = if params[:id]
               User.find_by!(id: params[:id])
             else
@@ -71,7 +71,10 @@ class ArticleController < ApplicationController
     redirect_to self_articles_list_path
   end
 
-  def permitted_article_fields
-    params.require(:article).permit(:message)
+  def article_params
+    params
+      .require(:article)
+      .permit(:message)
+      .merge({ user: current_user })
   end
 end

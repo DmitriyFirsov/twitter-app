@@ -57,6 +57,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find_by!(id: params[:id], user: current_user)
     @article.destroy
+    flash[:success] = t("articles.destroy.success")
   end
 
   protected

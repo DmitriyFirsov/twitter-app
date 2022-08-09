@@ -10,6 +10,8 @@ en:
     edit:
       title: 'Edit article'
       success: 'Article edited'
+    destroy:
+      success: 'Article successfully removed'
     new:
       title: 'Enter new article'
       success: 'Article created'

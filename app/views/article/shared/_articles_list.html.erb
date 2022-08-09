@@ -17,11 +17,7 @@
     </section>
     <footer>
       <div>
-        <%= t 'articles.list.footer_prefix' %>
-        <time datetime="<%= article.created_at %>">
-          <%= time_ago_in_words(article.created_at) %>
-        </time>
-        <%= t 'articles.list.footer_postfix' %>
+       <%= tag_time_ago_in_words article.created_at, 'articles.list.posted_ago.html' %>
       </div>
       <% if article.user.id == current_user.id %>
         <div>

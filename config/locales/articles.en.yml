@@ -14,5 +14,5 @@ en:
       title: 'Enter new article'
       success: 'Article created'
     list:
-      footer_prefix: "Posted"
-      footer_postfix: "ago"
+      posted_ago:
+        html: 'Posted %{time} ago'

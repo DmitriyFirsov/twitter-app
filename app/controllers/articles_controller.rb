@@ -47,11 +47,11 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find_by!(id: params[:id], user: current_user)
-    @article.update article_params
-
-    return unless @article.save
-
-    redirect_on_success t "articles.edit.success"
+    if @article.update article_params
+      redirect_on_success t "articles.edit.success"
+    else
+      render action: :edit
+    end
   end
 
   def destroy

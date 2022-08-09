@@ -1,5 +1,18 @@
-<%= form_with model: @article do |form| %>
-  <%= form.label :message, title %>
-  <%= form.text_area :message %>
-  <%= form.submit action_text %>
+<%= form_with model: @article, class: 'article-form' do |form| %>
+  <h1><%= title %></h1>
+  <div class="article-form_field">
+    <%= form.text_area :message %>
+    <% if @article.errors.include?(:message) %>
+      <div class="article-form_error-container">
+        <% @article.errors.full_messages_for(:message).each do |error| %>
+          <div>
+            <%= error %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="article-form_actions-container">
+    <%= form.submit action_text %>
+  </div>
 <% end %>

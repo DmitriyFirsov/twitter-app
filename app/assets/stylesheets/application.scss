@@ -1,4 +1,5 @@
 @import "defaults";
 @import "shared/flash-message";
 @import "shared/header";
-@import "shared/articles_list";
+@import "articles/shared/articles_list";
+@import "articles/shared/article_form";

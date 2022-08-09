@@ -21,9 +21,9 @@
       </div>
       <% if article.user.id == current_user.id %>
         <div>
-          <%= link_to t('articles.paths.edit'), edit_article_path(article) %>
+          <%= link_to t('articles.paths.edit'), edit_article_path(article.id) %>
           <button
-            data-url="<%= remove_article_path(article) %>"
+            data-url="<%= article_path(article) %>"
             data-action="remove"
           >
             <%= t 'articles.actions.remove' %>

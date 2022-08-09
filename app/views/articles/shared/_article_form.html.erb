@@ -1,0 +1,5 @@
+<%= form_with model: @article do |form| %>
+  <%= form.label :message, title %>
+  <%= form.text_area :message %>
+  <%= form.submit action_text %>
+<% end %>

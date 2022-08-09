@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ArticleController < ApplicationController
+class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
@@ -16,7 +16,6 @@ class ArticleController < ApplicationController
   end
 
   def user_articles
-
     return redirect_to self_articles_list_path if (params[:id] != "my") && (current_user.id.to_s == params[:id])
 
     detect_user
@@ -44,9 +43,10 @@ class ArticleController < ApplicationController
 
   def edit
     @article = Article.find_by!(id: params[:id], user: current_user)
+  end
 
-    return unless request.request_method == "PATCH"
-
+  def update
+    @article = Article.find_by!(id: params[:id], user: current_user)
     @article.update article_params
 
     return unless @article.save

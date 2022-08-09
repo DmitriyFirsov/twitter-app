@@ -16,6 +16,9 @@ class ArticleController < ApplicationController
   end
 
   def user_articles
+
+    return redirect_to self_articles_list_path if (params[:id] != "my") && (current_user.id.to_s == params[:id])
+
     detect_user
 
     @articles = Article
@@ -59,10 +62,10 @@ class ArticleController < ApplicationController
   protected
 
   def detect_user
-    @user = if params[:id]
-              User.find_by!(id: params[:id])
-            else
+    @user = if params[:id] == "my"
               current_user
+            else
+              User.find_by!(id: params[:id])
             end
   end
 

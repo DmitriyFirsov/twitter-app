@@ -1,5 +1,5 @@
 <%= form_for @article, url: new_article_path do |form| %>
-  <%= form.label :message, (I18n.t 'articles.new.title') %>
+  <%= form.label :message, t( 'articles.new.title') %>
   <%= form.text_area :message %>
-  <%= form.submit I18n.t 'articles.actions.create' %>
+  <%= form.submit t 'articles.actions.create' %>
 <% end %>

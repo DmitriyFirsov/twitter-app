@@ -34,7 +34,7 @@ class ArticleController < ApplicationController
   def create
     @article = Article.new article_params
 
-    return redirect_on_success I18n.t "articles.new.success" if @article.save
+    return redirect_on_success t "articles.new.success" if @article.save
 
     render action: :new
   end
@@ -48,7 +48,7 @@ class ArticleController < ApplicationController
 
     return unless @article.save
 
-    redirect_on_success I18n.t "articles.edit.success"
+    redirect_on_success t "articles.edit.success"
   end
 
   def destroy

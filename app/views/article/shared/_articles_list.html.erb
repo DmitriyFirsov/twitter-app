@@ -17,20 +17,20 @@
     </section>
     <footer>
       <div>
-        <%= I18n.t 'articles.list.footer_prefix' %>
+        <%= t 'articles.list.footer_prefix' %>
         <time datetime="<%= article.created_at %>">
           <%= time_ago_in_words(article.created_at) %>
         </time>
-        <%= I18n.t 'articles.list.footer_postfix' %>
+        <%= t 'articles.list.footer_postfix' %>
       </div>
       <% if article.user.id == current_user.id %>
         <div>
-          <%= link_to (I18n.t 'articles.paths.edit'), edit_article_path(article) %>
+          <%= link_to t('articles.paths.edit'), edit_article_path(article) %>
           <button
             data-url="<%= remove_article_path(article) %>"
             data-action="remove"
           >
-            <%= I18n.t 'articles.actions.remove' %>
+            <%= t 'articles.actions.remove' %>
           </button>
         </div>
       <% end %>

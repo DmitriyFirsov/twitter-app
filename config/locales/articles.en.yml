@@ -15,4 +15,4 @@ en:
       success: 'Article created'
     list:
       footer_prefix: "Posted"
-      footer_postfix: "ogo"
+      footer_postfix: "ago"

@@ -7,12 +7,12 @@
       <div>
         <%= current_user.surname %>
       </div>
-      <%= link_to (I18n.t "articles.paths.new"), new_article_path %>
-      <%= link_to (I18n.t "devise.path.sign_out"), destroy_session_path(:user) %>
+      <%= link_to t( "articles.paths.new"), new_article_path %>
+      <%= link_to t( "devise.path.sign_out"), destroy_session_path(:user) %>
     </div>
   <% else %>
     <% if controller_name != "sessions" %>
-      <%= link_to (I18n.t "devise.path.sign_in"), new_user_session_path %>
+      <%= link_to t( "devise.path.sign_in"), new_user_session_path %>
     <% end %>
   <% end %>
 </header>

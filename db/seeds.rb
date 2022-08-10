@@ -8,4 +8,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require_relative "seeds/development" if %w[development test].include? Rails.env
+require_relative "seeds/development" if Rails.env == "development"

@@ -42,9 +42,16 @@ user_list.each do |user_item|
   rand(5..20).times do
     next unless user.saved_changes?
 
-    user.articles.create(
-      message: Faker::Lorem.paragraph_by_chars(number: 120, supplemental: false),
+    article = user.articles.create(
+      message: Faker::Lorem.paragraph_by_chars(number: rand(80..200), supplemental: false),
       created_at: Faker::Date.between(from: 20.days.ago, to: Date.today)
     )
+
+    rand(0..20).times do
+      article.comments.create(
+        message: Faker::Lorem.paragraph_by_chars(number: rand(80..200), supplemental: false),
+        created_at: Faker::Date.between(from: 19.days.ago, to: Date.today)
+      )
+    end
   end
 end

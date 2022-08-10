@@ -50,7 +50,8 @@ user_list.each do |user_item|
     rand(0..20).times do
       article.comments.create(
         message: Faker::Lorem.paragraph_by_chars(number: rand(80..200), supplemental: false),
-        created_at: Faker::Date.between(from: 19.days.ago, to: Date.today)
+        created_at: Faker::Date.between(from: 20.days.ago, to: Date.today),
+        user: user
       )
     end
   end

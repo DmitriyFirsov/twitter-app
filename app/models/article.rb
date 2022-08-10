@@ -5,4 +5,5 @@ class Article < ApplicationRecord
   validates :message, length: { in: 6..200 }
 
   belongs_to :user, optional: false
+  has_many :comments, dependent: :destroy
 end

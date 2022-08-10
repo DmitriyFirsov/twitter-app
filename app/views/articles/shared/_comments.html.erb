@@ -1,0 +1,20 @@
+<div>
+  <% article.comments.each do |comment| %>
+    <div>
+      <div>
+        <div>
+          <%= comment.user.name %>
+        </div>
+        <div>
+          <%= comment.user.surname %>
+        </div>
+      </div>
+      <div>
+        <%= comment.message %>
+      </div>
+      <div>
+        <%= tag_time_ago_in_words comment.created_at, 'articles.comments.commented_ago.html' %>
+      </div>
+    </div>
+  <% end %>
+</div>

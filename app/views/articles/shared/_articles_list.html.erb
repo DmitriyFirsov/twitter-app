@@ -32,6 +32,7 @@
       <% end %>
     </footer>
   </article>
+  <%= render 'articles/shared/comments', article: article %>
 <% end %>
 <% content_for :head do %>
   <%= javascript_include_tag "articles.js" %>

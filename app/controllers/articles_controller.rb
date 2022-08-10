@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = if user_signed_in?
                   Article
-                    .eager_load(:user)
+                    .eager_load(:user, comments: [:user])
                     .reorder(created_at: :desc)
                     .all
                 else

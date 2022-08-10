@@ -9,12 +9,12 @@ en:
       create: 'Create'
     edit:
       title: 'Edit article'
-      success: 'Article edited'
+      success: 'Article is edited'
     destroy:
       success: 'Article successfully removed'
     new:
       title: 'Enter new article'
-      success: 'Article created'
+      success: 'Article is created'
     list:
       posted_ago:
         html: 'Posted %{time} ago'

@@ -2,31 +2,21 @@
 
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
+  before_action :validate_index_props, only: [:index]
 
-  def index
-    @articles = if user_signed_in?
-                  Article
-                    .eager_load(:user)
-                    .reorder(created_at: :desc)
-                    .all
-                else
-                  []
-                end
-    @show_article_author = true
+  def validate_index_props
+    @validator = ArticleIndexValidator.new(params)
+    redirect_to root_path unless @validator.valid?
   end
 
-  def user_articles
-    return redirect_to self_articles_list_path if (params[:id] != "my") && (current_user.id.to_s == params[:id])
-
-    detect_user
-
+  def index
     @articles = Article
-                .where("user_id = ?", @user.id)
                 .eager_load(:user)
-                .reorder(created_at: :desc)
-                .all
+                .order(created_at: :desc)
 
-    @show_article_author = false
+    @articles = @articles.where("user_id = ?", params[:user]) if params[:user]
+
+    @user_filter = (User.find_by(id: params[:user]) if params[:user])
   end
 
   def new
@@ -62,17 +52,14 @@ class ArticlesController < ApplicationController
 
   protected
 
-  def detect_user
-    @user = if params[:id] == "my"
-              current_user
-            else
-              User.find_by!(id: params[:id])
-            end
+  def clean_up_filter_params
+    params
+      .permit(:user)
   end
 
   def redirect_on_success(message)
     flash[:success] = message
-    redirect_to self_articles_list_path
+    redirect_to root_path(user: current_user)
   end
 
   def article_params

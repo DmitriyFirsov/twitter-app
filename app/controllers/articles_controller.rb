@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :validate_index_props, only: [:index]
 
   def validate_index_props
-    @validator = ArticleIndexValidator.new(params)
+    @validator = ParamsValidator::ArticleSearchParamsValidator.new(params)
     redirect_to root_path unless @validator.valid?
   end
 

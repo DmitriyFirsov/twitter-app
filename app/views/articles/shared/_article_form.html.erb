@@ -1,5 +1,4 @@
 <%= form_with model: @article, class: 'article-form' do |form| %>
-  <h1><%= title %></h1>
   <div class="article-form_field">
     <%= form.text_area :message %>
     <% if @article.errors.include?(:message) %>
@@ -13,6 +12,13 @@
     <% end %>
   </div>
   <div class="article-form_actions-container">
-    <%= form.submit action_text %>
+    <%
+      if @article.new_record?
+        @button_text = t('articles.actions.create')
+      else
+        @button_text = t('articles.actions.edit');
+      end
+    %>
+    <%= form.submit @button_text %>
   </div>
 <% end %>

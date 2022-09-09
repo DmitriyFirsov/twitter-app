@@ -2,7 +2,6 @@
 
 module ParamsValidator
   class ArticleSearchParamsValidator < ParamsValidator::Base
-    validates :user, numericality: true
+    validates :user, numericality: true, allow_nil: true
   end
 end
-

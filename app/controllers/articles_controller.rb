@@ -4,11 +4,6 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :validate_index_props, only: [:index]
 
-  def validate_index_props
-    @validator = ParamsValidator::ArticleSearchParamsValidator.new(params)
-    redirect_to root_path unless @validator.valid?
-  end
-
   def index
     @articles = Article
                 .eager_load(:user)
@@ -51,6 +46,11 @@ class ArticlesController < ApplicationController
   end
 
   protected
+
+  def validate_index_props
+    @validator = ParamsValidator::ArticleSearchParamsValidator.new(params)
+    redirect_to root_path unless @validator.valid?
+  end
 
   def clean_up_filter_params
     params

@@ -4,9 +4,9 @@
     <% if @article.errors.include?(:message) %>
       <div class="article-form_error-container">
         <% @article.errors.full_messages_for(:message).each do |error| %>
-          <div>
+          <p>
             <%= error %>
-          </div>
+          </p>
         <% end %>
       </div>
     <% end %>

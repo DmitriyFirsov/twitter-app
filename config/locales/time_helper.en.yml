@@ -1,0 +1,4 @@
+en:
+  time_helper:
+    tag_time_ago_in_words:
+      html: '%{time} ago'

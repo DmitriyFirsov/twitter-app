@@ -1,0 +1,20 @@
+en:
+  articles:
+    paths:
+      new: 'New article'
+      edit: 'Edit'
+    actions:
+      edit: 'Edit'
+      remove: 'Remove'
+      create: 'Create'
+    edit:
+      title: 'Edit article'
+      success: 'Article is edited'
+    destroy:
+      success: 'Article successfully removed'
+    new:
+      title: 'Enter new article'
+      success: 'Article is created'
+    list:
+      posted_ago:
+        html: 'Posted %{time} ago'

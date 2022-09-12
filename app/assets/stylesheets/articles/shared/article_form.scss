@@ -1,0 +1,41 @@
+.article-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  max-width: 30em;
+  margin: auto;
+
+  textarea {
+    resize: vertical;
+    min-height: 8em;
+    width: 100%;
+  }
+
+  input[type="submit"], button {
+    padding: 0.2em;
+    min-width: 5em;
+  }
+
+  &_field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_error-container {
+    border-radius: 5px;
+    border-color: #B00100;
+    background-color: #fd9a9a;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_actions-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    align-items: center;
+    justify-content: center;
+  }
+}

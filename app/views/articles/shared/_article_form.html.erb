@@ -1,0 +1,24 @@
+<%= form_with model: model, class: 'article-form' do |form| %>
+  <div class="article-form_field">
+    <%= form.text_area :message %>
+    <% if model.errors.include?(:message) %>
+      <div class="article-form_error-container">
+        <% model.errors.full_messages_for(:message).each do |error| %>
+          <p>
+            <%= error %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="article-form_actions-container">
+    <%
+      if model.new_record?
+        @button_text = t('articles.actions.create')
+      else
+        @button_text = t('articles.actions.edit');
+      end
+    %>
+    <%= form.submit @button_text %>
+  </div>
+<% end %>

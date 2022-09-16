@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Article < ApplicationRecord
+class Comment < ApplicationRecord
   validates :message, presence: true
   validates :message, length: { in: 6..200 }
 
   belongs_to :user, optional: false
-  has_many :comments, dependent: :destroy
+  belongs_to :article, optional: false
 end

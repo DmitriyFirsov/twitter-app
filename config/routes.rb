@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   root to: "articles#index"
 
-  resources :articles, only: %i[create new edit destroy update]
+  resources :articles, only: %i[create new edit destroy update] do
+    resources :comments
+  end
 end

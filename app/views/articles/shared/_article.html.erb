@@ -1,0 +1,38 @@
+<article class="article">
+  <% unless show_header %>
+    <header class="article-name-container">
+      <%= link_to root_path(user: article.user) do %>
+        <p>
+          <%= article.user.name %>
+        </p>
+        <p>
+          <%= article.user.surname %>
+        </p>
+      <% end %>
+    </header>
+  <% end %>
+  <section>
+    <%= article.message %>
+  </section>
+  <footer>
+    <div>
+      <%= tag_time_ago_in_words article.created_at, 'articles.list.posted_ago.html' %>
+    </div>
+    <% if show_comment_link %>
+      <div>
+        <%= link_to t('articles.paths.comments'), article_comments_path(article.id) %>
+      </div>
+    <% end %>
+    <% if article.user.id == current_user.id %>
+      <div>
+        <%= link_to t('articles.paths.edit'), edit_article_path(article.id) %>
+        <button
+          data-url="<%= article_path(article) %>"
+          data-action="remove"
+        >
+          <%= t 'articles.actions.remove' %>
+        </button>
+      </div>
+    <% end %>
+  </footer>
+</article>

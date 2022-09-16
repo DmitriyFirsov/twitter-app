@@ -3,6 +3,7 @@ en:
     paths:
       new: 'New article'
       edit: 'Edit'
+      comments: 'Comments'
     actions:
       edit: 'Edit'
       remove: 'Remove'

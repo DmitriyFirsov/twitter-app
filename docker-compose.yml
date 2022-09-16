@@ -7,7 +7,6 @@ volumes:
 services:
   database:
     image: postgres:14
-    restart: unless-stopped
     env_file:
       - .env
     volumes:
@@ -16,7 +15,8 @@ services:
       - "5432:5432"
   app:
     image: ruby:2.7.6
-    restart: unless-stopped
+    depends_on:
+      - database
     env_file:
       - .env
     working_dir: /src

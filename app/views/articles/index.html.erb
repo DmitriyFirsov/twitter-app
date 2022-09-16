@@ -3,39 +3,7 @@
 <% end %>
 
 <% @articles.each do |article| %>
-  <article class="article">
-    <% unless @user_filter %>
-      <header class="article-name-container">
-        <%= link_to root_path(user: article.user) do %>
-          <p>
-            <%= article.user.name %>
-          </p>
-          <p>
-            <%= article.user.surname %>
-          </p>
-        <% end %>
-      </header>
-    <% end %>
-    <section>
-      <%= article.message %>
-    </section>
-    <footer>
-      <div>
-        <%= tag_time_ago_in_words article.created_at, 'articles.list.posted_ago.html' %>
-      </div>
-      <% if article.user.id == current_user.id %>
-        <div>
-          <%= link_to t('articles.paths.edit'), edit_article_path(article.id) %>
-          <button
-            data-url="<%= article_path(article) %>"
-            data-action="remove"
-          >
-            <%= t 'articles.actions.remove' %>
-          </button>
-        </div>
-      <% end %>
-    </footer>
-  </article>
+  <%= render 'articles/shared/article', article: article, show_header: @user_filter, show_comment_link: true %>
 <% end %>
 <% content_for :head do %>
   <%= javascript_include_tag "articles.js" %>

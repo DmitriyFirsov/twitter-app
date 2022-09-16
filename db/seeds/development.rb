@@ -48,3 +48,14 @@ user_list.each do |user_item|
     )
   end
 end
+
+Article.all.each do |article|
+  rand(5..20).times do
+    index = rand(1..5)
+    article.comments.create(
+      message: Faker::Lorem.paragraph_by_chars(number: 120, supplemental: false),
+      created_at: Faker::Date.between(from: article.created_at.to_datetime, to: Date.today),
+      user: User.find_by!(user_list[index])
+    )
+  end
+end
